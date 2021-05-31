@@ -1,0 +1,9 @@
+server.servlet.path: "/*"
+spring:
+  jpa:
+    database-platform: com.simplywallstreet.swsbe.database.SQLDialect
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:sqlite:sws.sqlite3
+    driver-class-name: org.sqlite.JDBC

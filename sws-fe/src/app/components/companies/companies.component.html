@@ -1,0 +1,66 @@
+<div class="flexbox-parent">
+  <h1>Please find all the companies listed</h1>
+
+  <div class="mat-elevation-z8">
+
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="ASX" #input>
+    </mat-form-field>
+
+    <mat-table [dataSource]="listData" matSort>
+
+      <!-- Name   -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+      </ng-container>
+
+      <!-- Unique Symbol   -->
+      <ng-container matColumnDef="uniqueSymbol">
+        <mat-header-cell *matHeaderCellDef>Unique Symbol</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.uniqueSymbol}}</mat-cell>
+      </ng-container>
+
+      <!-- Exchange Symbol   -->
+      <ng-container matColumnDef="exchangeSymbol">
+        <mat-header-cell *matHeaderCellDef>Exchange Symbol</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.exchangeSymbol}}</mat-cell>
+      </ng-container>
+
+      <!-- Volatility   -->
+      <ng-container matColumnDef="companyScore">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Company Score</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.companyScore.total}}</mat-cell>
+      </ng-container>
+
+      <!-- Volatility   -->
+      <ng-container matColumnDef="volatility">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Volatility</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.companyVolatility}}</mat-cell>
+      </ng-container>
+
+      <!-- Close Price   -->
+      <ng-container matColumnDef="closePrice">
+        <mat-header-cell *matHeaderCellDef>Close Price</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.swsCompanyPriceCloses[0].price}}</mat-cell>
+      </ng-container>
+
+      <!-- See More   -->
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-button color="primary" (click)="seeCompany(element)">
+            See more
+          </button>
+        </mat-cell>
+      </ng-container>
+
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+  </div>
+</div>
