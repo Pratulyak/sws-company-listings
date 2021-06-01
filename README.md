@@ -38,6 +38,8 @@ Running the backed:
 ```
 cd sws-be
 ./gradlew bootRun
+
+http://localhost:8080/
 ```
 
 ## SWS FE
@@ -62,6 +64,7 @@ npm install
 
 ng serve 
 
+http://localhost:4200/
 ```
 
 ##TODO:
